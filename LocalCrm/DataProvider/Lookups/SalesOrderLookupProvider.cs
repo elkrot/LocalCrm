@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq.Expressions;
 
 namespace LocalCrm.DataProvider.Lookups
 {
@@ -30,6 +31,20 @@ namespace LocalCrm.DataProvider.Lookups
                             DisplayValue = string.Format("{0} от {1:d}", f.OrderNo, f.OrderDate)
                         })
                         .OrderBy(l => l.DisplayValue)
+                        .ToList();
+            }
+        }
+
+        public IEnumerable<LookupItem> GetLookupWithCondition(Expression<Func<SalesOrderHeader, bool>> where, Expression<Func<SalesOrderHeader, object>> orderby)
+        {
+            using (var service = _dataServiceCreator())
+            {
+                return service.GetSalesOrdersByCondition(where,orderby)
+                        .Select(f => new LookupItem
+                        {
+                            Id = f.SalesOrderId,
+                            DisplayValue = string.Format("{0} от {1:d}", f.OrderNo, f.OrderDate)
+                        })
                         .ToList();
             }
         }

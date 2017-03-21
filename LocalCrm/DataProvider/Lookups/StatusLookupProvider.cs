@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq.Expressions;
 
 namespace LocalCrm.DataProvider.Lookups
 {
@@ -28,6 +29,11 @@ namespace LocalCrm.DataProvider.Lookups
                         .OrderBy(l => l.DisplayValue)
                         .ToList();
             }
+        }
+
+        public IEnumerable<LookupItem> GetLookupWithCondition(Expression<Func<Status, bool>> where, Expression<Func<Status, object>> orderby)
+        {
+            throw new NotImplementedException();
         }
     }
 }

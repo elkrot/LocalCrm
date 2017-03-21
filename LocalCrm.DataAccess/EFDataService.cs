@@ -7,6 +7,7 @@ using LocalCrm.Model;
 using LocalCrm.DataAccess;
 using System.Data.Entity;
 using LocalCrm.Infrastructure;
+using System.Linq.Expressions;
 
 namespace LocalCrm.DataAccess
 {
@@ -116,6 +117,22 @@ namespace LocalCrm.DataAccess
                
                 return ds.SafeSaveChanges();
             }
+        }
+
+        public IEnumerable<SalesOrderHeader> GetSalesOrdersByPeriod(DateTime dtFirst, DateTime dtLast)
+        {
+
+            using (var ds = new LocalCrmContext())
+            {
+
+                return ds.SalesOrderHeaders
+                    .Include("City")
+                    .Include("TransportCompany")
+                    .Include("Customer")
+                    .Include("SalesPerson")
+                    .Where(x => x.OrderDate >= dtFirst && x.OrderDate <= dtLast).ToList();
+            }
+
         }
         #endregion
 
@@ -270,25 +287,27 @@ namespace LocalCrm.DataAccess
                 return ds.SafeSaveChanges();
             }
         }
-        #endregion
 
-
-
-
-        public IEnumerable<SalesOrderHeader> GetSalesOrdersByPeriod(DateTime dtFirst,DateTime dtLast)
+        public IEnumerable<SalesOrderHeader> GetSalesOrdersByCondition(Expression<Func<SalesOrderHeader, bool>> where, Expression<Func<SalesOrderHeader, object>> orderby)
         {
-
             using (var ds = new LocalCrmContext())
             {
-             
+
                 return ds.SalesOrderHeaders
                     .Include("City")
                     .Include("TransportCompany")
                     .Include("Customer")
                     .Include("SalesPerson")
-                    .Where(x=>x.OrderDate>=dtFirst && x.OrderDate <= dtLast).ToList();
+                    .Where(where)
+                    .OrderBy(x=>x.OrderDate).ThenBy(orderby)
+                    .ToList();
             }
-
         }
+        #endregion
+
+
+
+
+
     }
 }

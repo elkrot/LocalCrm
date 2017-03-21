@@ -3,6 +3,7 @@ using LocalCrm.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -38,5 +39,10 @@ namespace LocalCrm.DataAccess
         MethodResult<int> DeleteCity(int cityId);
         City GetCityById(int cityId);
         MethodResult<int> SaveCity(City city);
+
+        IEnumerable<SalesOrderHeader> GetSalesOrdersByPeriod(DateTime dtFirst, DateTime dtLast);
+
+
+        IEnumerable<SalesOrderHeader> GetSalesOrdersByCondition(Expression<Func<SalesOrderHeader, bool>> where, Expression<Func<SalesOrderHeader, object>> orderby);
     }
 }

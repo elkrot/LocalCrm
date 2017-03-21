@@ -38,7 +38,11 @@ namespace LocalCrm.ViewModel
         public void Load()
         {
             NavigationItems.Clear();
-            foreach (var friendLookupItem in _salesOrderLookupProvider.GetLookup())
+            foreach (var friendLookupItem in 
+                _salesOrderLookupProvider.GetLookupWithCondition(
+                     x=>x.OrderDate>DateTime.MinValue
+                    ,y=>y.OrderNo
+                ))
             {
                 NavigationItems.Add(
                   new NavigationItemViewModel(

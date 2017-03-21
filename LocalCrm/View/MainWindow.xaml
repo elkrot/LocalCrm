@@ -10,18 +10,20 @@
         Title="Учет заказов" FontSize="{StaticResource DefaultFontSize}"
         MinHeight="650" MinWidth="900" Height="650" Width="1240"
         WindowStartupLocation="CenterScreen">
-    <Grid ShowGridLines="True" RenderTransformOrigin="0.503,0.453" Background="White">
+    <Grid ShowGridLines="False" RenderTransformOrigin="0.503,0.453" Background="White">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
 
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*"></ColumnDefinition>
+
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        
         <ToolBarTray HorizontalAlignment="Left" Height="50" 
-                      Margin="0,10,0,0" VerticalAlignment="Top" Width="507" Grid.Column="1">
-            <ToolBar Height="50" VerticalAlignment="Top">
+                      Margin="0,10,0,0" VerticalAlignment="Top" Width="230" Grid.Column="1">
+            <ToolBar Height="50" VerticalAlignment="Top" Margin="0,0,-772,0">
                 <Button  VerticalAlignment="Top" Height="40" Click="ToggleButton_Click">
                     <Image Source="/LocalCrm;component/img/orders.png" Width="50" Margin="0"/>
 
@@ -38,6 +40,7 @@
                 <Button>
 
                 </Button>
+                <view:PeriodControl Width="546" />
                 <!--<TextBox Foreground="LightGray" Width="100">Поиск...</TextBox>-->
             </ToolBar>
             <!--<ToolBar>

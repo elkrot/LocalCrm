@@ -23,6 +23,8 @@ namespace LocalCrm.DataAccess
             City c = new City() { CityName = "Комсосольск" };
             db.Cities.Add(c);
                  db.SaveChanges();
+
+
            
         }
     }
