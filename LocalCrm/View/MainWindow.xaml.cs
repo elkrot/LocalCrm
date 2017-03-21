@@ -33,6 +33,7 @@ namespace LocalCrm
         public MainWindow()
         {
             InitializeComponent();
+            Main.Content = new SalesOrderPage(_salesOrderViewModel);
         }
 
         private void ToggleButton_Click(object sender, RoutedEventArgs e)

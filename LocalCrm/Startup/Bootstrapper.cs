@@ -52,6 +52,11 @@ namespace LocalCrm.Startup
             builder.RegisterType<TransportCompanyEditViewModel>().As<ITransportCompanyEditViewModel>();
             builder.RegisterType<TransportCompanyNavigationViewModel>().As<ITransportCompanyNavigationViewModel>();
 
+            builder.RegisterType<ConditionViewModel>().AsSelf();
+
+             
+
+
             builder.RegisterType<CityDataProvider>().As<ICityDataProvider>();
             builder.RegisterType<CityEditViewModel>().As<ICityEditViewModel>();
             builder.RegisterType<CityNavigationViewModel>().As<ICityNavigationViewModel>();

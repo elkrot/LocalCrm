@@ -6,17 +6,16 @@ using System.Threading.Tasks;
 
 namespace LocalCrm.ViewModel
 {
-    public interface IConditionViewModel
+    public class ConditionViewModel :  Observable
     {
-        void Load();
-    }
+        public DateTime EndDate { get; set; }
 
+        public DateTime StartDate { get; set; }
 
-    public class ConditionViewModel : IConditionViewModel
-    {
         public void Load()
         {
-            throw new NotImplementedException();
+            StartDate = DateTime.Today;
+            EndDate = DateTime.MaxValue;
         }
     }
 }

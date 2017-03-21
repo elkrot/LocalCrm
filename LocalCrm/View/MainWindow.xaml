@@ -40,7 +40,7 @@
                 <Button>
 
                 </Button>
-                <view:PeriodControl Width="546" />
+                <view:PeriodControl DataContext="{Binding ConditionViewModel}" Width="546" />
                 <!--<TextBox Foreground="LightGray" Width="100">Поиск...</TextBox>-->
             </ToolBar>
             <!--<ToolBar>

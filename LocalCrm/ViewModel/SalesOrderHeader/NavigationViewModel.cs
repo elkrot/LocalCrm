@@ -13,7 +13,7 @@ using System.Windows.Input;
 
 namespace LocalCrm.ViewModel
 {
-    public interface INavigationViewModel
+    public interface INavigationViewModel 
     {
         void Load();
     }
@@ -24,8 +24,10 @@ namespace LocalCrm.ViewModel
         private readonly ILookupProvider<SalesOrderHeader> _salesOrderLookupProvider;
         #region Constructor
         public NavigationViewModel(IEventAggregator eventAggregator,
-          ILookupProvider<SalesOrderHeader> salesOrderHeaderLookupProvider)
+          ILookupProvider<SalesOrderHeader> salesOrderHeaderLookupProvider
+            ,ConditionViewModel conditionViewModel)
         {
+            ConditionViewModel = conditionViewModel;
             _eventAggregator = eventAggregator;
             _eventAggregator.GetEvent<SalesOrderSavedEvent>().Subscribe(OnSalesOrderHeaderSaved);
             _eventAggregator.GetEvent<SalesOrderDeletedEvent>().Subscribe(OnSalesOrderHeaderDeleted);
@@ -37,11 +39,12 @@ namespace LocalCrm.ViewModel
         #region Load
         public void Load()
         {
+            ConditionViewModel.Load();
             NavigationItems.Clear();
             foreach (var friendLookupItem in 
                 _salesOrderLookupProvider.GetLookupWithCondition(
-                     x=>x.OrderDate>DateTime.MinValue
-                    ,y=>y.OrderNo
+                     x=>x.OrderDate>= ConditionViewModel.StartDate && x.OrderDate <= ConditionViewModel.EndDate
+                    , y=>y.OrderNo
                 ))
             {
                 NavigationItems.Add(
@@ -52,7 +55,7 @@ namespace LocalCrm.ViewModel
             }
         }
         #endregion
-
+        public ConditionViewModel ConditionViewModel;
         public ObservableCollection<NavigationItemViewModel> NavigationItems { get; set; }
 
         #region OnSalesOrderHeaderDeleted
@@ -104,7 +107,7 @@ namespace LocalCrm.ViewModel
 
 
         public ICommand OpenSalesOrderHeaderEditViewCommand { get; set; }
-
+        
         public int SalesOrderHeaderId { get; private set; }
 
         #region DisplayValue
