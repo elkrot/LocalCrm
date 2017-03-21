@@ -1,0 +1,556 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{560CC86B-694A-44A3-9D6F-8FC2F8A85104}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LocalCrm</RootNamespace>
+    <AssemblyName>LocalCrm</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationVersion>1.0.1.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>05AC2EB9CB45B5B2DAA10A1DFE8372F34233811F</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>LocalCrm_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>img\favIco.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=4.4.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.4.0\lib\net45\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.PubSubEvents, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.PubSubEvents.1.1.2\lib\portable-sl5+windowsphone8+windows8+net40+wpa81\Microsoft.Practices.Prism.PubSubEvents.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Windows.Shell, Version=3.5.41019.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xaml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="UIAutomationProvider">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="UIAutomationTypes">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WindowsFormsIntegration">
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Behaviors\ChangeBehavior.cs" />
+    <Compile Include="Behaviors\DataGridChangeBehavior.cs" />
+    <Compile Include="Command\DelegateCommand.cs" />
+    <Compile Include="Converters\ComboBoxOriginalValueConverter.cs" />
+    <Compile Include="Converters\DatePickerOriginalValueConverter.cs" />
+    <Compile Include="DataProvider\Customer\ICustomerDataProvider.cs" />
+    <Compile Include="DataProvider\Customer\CustomerDataProvider.cs" />
+    <Compile Include="DataProvider\City\ICityDataProvider.cs" />
+    <Compile Include="DataProvider\City\CityDataProvider.cs" />
+    <Compile Include="DataProvider\TransportCompany\ITransportCompanyDataProvider.cs" />
+    <Compile Include="DataProvider\SalesOrder\ISalesOrderDataProvider.cs" />
+    <Compile Include="DataProvider\SalesPerson\ISalesPersonDataProvider.cs" />
+    <Compile Include="DataProvider\Lookups\CitiesLookupProvider.cs" />
+    <Compile Include="DataProvider\Lookups\ILookupProvider.cs" />
+    <Compile Include="DataProvider\Lookups\LookupItem.cs" />
+    <Compile Include="DataProvider\Lookups\PersonLookupProvider.cs" />
+    <Compile Include="DataProvider\Lookups\SalesOrderLookupProvider.cs" />
+    <Compile Include="DataProvider\Lookups\StatusLookupProvider.cs" />
+    <Compile Include="DataProvider\Lookups\TransportCompanyLookupProvider.cs" />
+    <Compile Include="DataProvider\SalesOrder\SalesOrderDataProvider.cs" />
+    <Compile Include="DataProvider\SalesPerson\SalesPersonDataProvider.cs" />
+    <Compile Include="DataProvider\TransportCompany\TransportCompanyDataProvider.cs" />
+    <Compile Include="Event\Customer\OpenCustomerEditViewEvent.cs" />
+    <Compile Include="Event\Customer\CustomerDeletedEvent.cs" />
+    <Compile Include="Event\Customer\CustomerSavedEvent.cs" />
+    <Compile Include="Event\City\OpenCityEditViewEvent.cs" />
+    <Compile Include="Event\SalesOrder\OpenSalesOrderEditViewEvent.cs" />
+    <Compile Include="Event\SalesOrder\SalesOrderDeletedEvent.cs" />
+    <Compile Include="Event\SalesOrder\SalesOrderSavedEvent.cs" />
+    <Compile Include="Event\SalesPerson\OpenSalesPersonEditViewEvent.cs" />
+    <Compile Include="Event\SalesPerson\SalesPersonDeletedEvent.cs" />
+    <Compile Include="Event\SalesPerson\SalesPersonSavedEvent.cs" />
+    <Compile Include="Event\City\CityDeletedEvent.cs" />
+    <Compile Include="Event\City\CitySavedEvent.cs" />
+    <Compile Include="Event\TransportCompany\OpenTransportCompanyEditViewEvent.cs" />
+    <Compile Include="Event\TransportCompany\TransportCompanyDeletedEvent.cs" />
+    <Compile Include="Event\TransportCompany\TransportCompanySavedEvent.cs" />
+    <Compile Include="Reports\ObjectSource.cs" />
+    <Compile Include="Reports\ReportCondition.cs" />
+    <Compile Include="Reports\ReportsPage.xaml.cs">
+      <DependentUpon>ReportsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Startup\Bootstrapper.cs" />
+    <Compile Include="ViewModel\Customer\CustomerEditViewModel.cs" />
+    <Compile Include="ViewModel\Customer\CustomerViewModel.cs" />
+    <Compile Include="ViewModel\Customer\CustomerNavigationViewModel.cs" />
+    <Compile Include="ViewModel\References\ReferencesViewModel.cs" />
+    <Compile Include="ViewModel\SalesOrderHeader\ConditionViewModel.cs" />
+    <Compile Include="ViewModel\SalesOrderHeader\MainViewModel.cs" />
+    <Compile Include="ViewModel\SalesOrderHeader\NavigationViewModel.cs" />
+    <Compile Include="ViewModel\SalesOrderHeader\SalesOrderHeaderEditViewModel.cs" />
+    <Compile Include="ViewModel\SalesPerson\SalesPersonEditViewModel.cs" />
+    <Compile Include="ViewModel\SalesPerson\SalesPersonViewModel.cs" />
+    <Compile Include="ViewModel\SalesPerson\SalesPesonNavigationViewModel.cs" />
+    <Compile Include="ViewModel\City\CityEditViewModel.cs" />
+    <Compile Include="ViewModel\City\CityNavigationViewModel.cs" />
+    <Compile Include="ViewModel\City\CityViewModel.cs" />
+    <Compile Include="ViewModel\TransportCompany\TransportCompanyEditViewModel.cs" />
+    <Compile Include="ViewModel\TransportCompany\TransportCompanyNavigationViewModel.cs" />
+    <Compile Include="ViewModel\TransportCompany\TransportCompanyViewModel.cs" />
+    <Compile Include="View\ConditionForm.xaml.cs">
+      <DependentUpon>ConditionForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\ChangeTrackingCollectionInfo.xaml.cs">
+      <DependentUpon>ChangeTrackingCollectionInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Customer\CustomerEditView.xaml.cs">
+      <DependentUpon>CustomerEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Customer\CustomerNavigationView.xaml.cs">
+      <DependentUpon>CustomerNavigationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Customer\CustomerView.xaml.cs">
+      <DependentUpon>CustomerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PeriodControl.xaml.cs">
+      <DependentUpon>PeriodControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SalesOrderHeader\OrderNavigationView.xaml.cs">
+      <DependentUpon>OrderNavigationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SalesOrderHeader\SalesOrderHeaderEditView.xaml.cs">
+      <DependentUpon>SalesOrderHeaderEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ReferencesPage.xaml.cs">
+      <DependentUpon>ReferencesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ReportViwer.xaml.cs">
+      <DependentUpon>ReportViwer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\Common\Observable.cs" />
+    <Compile Include="View\SalesOrderHeader\SalesOrderPage.xaml.cs">
+      <DependentUpon>SalesOrderPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Person\SalesPersonEditView.xaml.cs">
+      <DependentUpon>SalesPersonEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Person\SalesPersonView.xaml.cs">
+      <DependentUpon>SalesPersonView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Person\SalesPersonNavigationView.xaml.cs">
+      <DependentUpon>SalesPersonNavigationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Services\IMessageDialogService.cs" />
+    <Compile Include="View\Services\MessageDialog.xaml.cs">
+      <DependentUpon>MessageDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Services\MessageDialogResult.cs" />
+    <Compile Include="View\Services\MessageDialogService.cs" />
+    <Compile Include="View\Cityes\CityEditView.xaml.cs">
+      <DependentUpon>CityEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Cityes\CityNavigationView.xaml.cs">
+      <DependentUpon>CityNavigationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Cityes\CityView.xaml.cs">
+      <DependentUpon>CityView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TransportCompany\TransportCompaniesViewz.xaml.cs">
+      <DependentUpon>TransportCompaniesViewz.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TransportCompany\TransportCompanyEditView.xaml.cs">
+      <DependentUpon>TransportCompanyEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TransportCompany\TransportCompanyNavigationView.xaml.cs">
+      <DependentUpon>TransportCompanyNavigationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TransportCompany\TransportCompanyView.xaml.cs">
+      <DependentUpon>TransportCompanyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Wrapper\Base\ChangeTrackingCollection.cs" />
+    <Compile Include="Wrapper\Base\IValidatableTrackingObject.cs" />
+    <Compile Include="Wrapper\Base\ModelWrapper.cs" />
+    <Compile Include="Wrapper\Base\NotifyDataErrorInfoBase.cs" />
+    <Compile Include="Wrapper\Custom\AddressWrapper.cs" />
+    <Compile Include="Wrapper\Custom\FriendEmailWrapper.cs" />
+    <Compile Include="Wrapper\Custom\FriendWrapper.cs" />
+    <Compile Include="Wrapper\Generated\CityWrapper.cs" />
+    <Compile Include="Wrapper\Generated\GenerateModelWrappers.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateModelWrappers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Wrapper\Generated\PersonWrapper.cs" />
+    <Compile Include="Wrapper\Generated\SalesOrderHeaderWrapper.cs" />
+    <Compile Include="Wrapper\Generated\TransportCompanyWrapper.cs" />
+    <Page Include="Styles\Brushes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Button.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\CheckBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ComboBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ControlBaseStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\DataGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\DatePicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Label.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\TabItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\TextBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ToolTip.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ValidationErrorTemplates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ConditionForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Controls\ChangeTrackingCollectionInfo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Customer\CustomerEditView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Customer\CustomerNavigationView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Customer\CustomerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Reports\ReportsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PeriodControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SalesOrderHeader\OrderNavigationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SalesOrderHeader\SalesOrderHeaderEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ReferencesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\ReportViwer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SalesOrderHeader\SalesOrderPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Person\SalesPersonEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Person\SalesPersonView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Person\SalesPersonNavigationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Services\MessageDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Cityes\CityEditView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Cityes\CityNavigationView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Cityes\CityView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\TransportCompany\TransportCompaniesViewz.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TransportCompany\TransportCompanyEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TransportCompany\TransportCompanyNavigationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TransportCompany\TransportCompanyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ReportByStatus.rdlc" />
+    <EmbeddedResource Include="Reports\ReportByTransportCompany.rdlc" />
+    <EmbeddedResource Include="Reports\ReportByDate.rdlc" />
+    <EmbeddedResource Include="Reports\TestReport.rdlc" />
+    <None Include="LocalCrm_TemporaryKey.pfx" />
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\LocalCrm.Model.SalesOrderHeader.datasource" />
+    <None Include="Properties\DataSources\LocalCrm.Reports.Product.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\city.png" />
+    <Resource Include="img\orders.png" />
+    <Resource Include="img\person.png" />
+    <Resource Include="img\reports.png" />
+    <Resource Include="img\transport.png" />
+    <Resource Include="img\ref.png" />
+    <SplashScreen Include="img\startup.png" />
+    <Resource Include="img\favIco.png" />
+    <Resource Include="img\favIco.ico" />
+    <Content Include="Wrapper\Generated\GenerateModelWrappers.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateModelWrappers.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.ReportViewer.12.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft Report Viewer 2014 Runtime</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SqlServer.SqlLocalDB.11.1">
+      <Visible>False</Visible>
+      <ProductName>SQL Server 2012 Express LocalDB</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SqlServer.SQLSysClrTypes.12.0.x64">
+      <Visible>False</Visible>
+      <ProductName>Microsoft® System CLR Types for SQL Server® 2014 %28x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LocalCrm.DataAccess\LocalCrm.DataAccess.csproj">
+      <Project>{a6f890e9-0e96-4a2c-b2b3-5b5cefdc0d17}</Project>
+      <Name>LocalCrm.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LocalCrm.Infrastructure\LocalCrm.Infrastructure.csproj">
+      <Project>{1b2dd508-e06d-48c1-ab51-f719645ef90c}</Project>
+      <Name>LocalCrm.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LocalCrm.Model\LocalCrm.Model.csproj">
+      <Project>{dfa5e395-8134-4dae-90a4-56b1beb75bbd}</Project>
+      <Name>LocalCrm.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

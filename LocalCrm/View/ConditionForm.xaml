@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="LocalCrm.View.ConditionForm"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:view="clr-namespace:LocalCrm.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="150" d:DesignWidth="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <!--Period Picker-->
+        <view:PeriodControl DataContext="{Binding NavigationViewModel}" Grid.Row="0" Grid.ColumnSpan="4"/>
+
+        <Label Content="Трансп. компания" Grid.Column="0" HorizontalAlignment="Center" Grid.Row="1"/>
+        <ComboBox ItemsSource="{Binding TransportCompanyLookupProvider}"
+                      DisplayMemberPath="DisplayValue"
+                      SelectedValuePath="Id"
+                      SelectedValue="{Binding SalesOrderHeader.TransportCompanyId,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                     Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"  VerticalAlignment="Center" Height="30" Margin="0,7"/>
+
+        <Label Content="Статус" Grid.Column="0" HorizontalAlignment="Center" Grid.Row="2"/>
+        <ComboBox ItemsSource="{Binding StatusLookup}"
+                      DisplayMemberPath="DisplayValue"
+                      SelectedValuePath="Id"
+                      SelectedValue="{Binding SalesOrderHeader.Status,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                     Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Height="30" Margin="0,7"/>
+
+    </Grid>
+</UserControl>
