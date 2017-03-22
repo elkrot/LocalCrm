@@ -26,7 +26,7 @@ namespace LocalCrm.Model
 
         public string TrackNumber { get; set; }
         public string Comment { get; set; }
-
+        public Nullable<System.DateTime> OrderComplitDate { get; set; }
 
         public Nullable<System.DateTime> ModifiedDate { get; set; }
         /* virtual */

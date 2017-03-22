@@ -76,13 +76,18 @@
         <Label Content="Дата получения" Grid.Row="7" Grid.Column="3" Margin="0,8,5,8" Height="30" Width="Auto" HorizontalAlignment="Left"/>
         <DatePicker SelectedDate="{Binding SalesOrderHeader.ReceiptDate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
                     Grid.Row="7" Grid.Column="4" Height="30" Margin="0,8"/>
-       
+        
+
+
+
         <Label Content="Трак номер" Grid.Row="8" Grid.Column="3" Margin="0,7,5,7" Height="30" Width="Auto" HorizontalAlignment="Left"/>
-        <TextBox Text="{Binding SalesOrderHeader.TrackNumber,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged
-            }" 
+        <TextBox Text="{Binding SalesOrderHeader.TrackNumber,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
                  Grid.Row="8"  Grid.Column="4" Height="30" Margin="0,7"/>
-        
-        
+
+        <Label Content="Дата сбора заказа" Grid.Row="8" Grid.Column="0" Margin="0,8,5,8" Height="30" Width="Auto" HorizontalAlignment="Left"/>
+        <DatePicker SelectedDate="{Binding SalesOrderHeader.OrderComplitDate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                    Grid.Row="8" Grid.Column="1" Height="30" Margin="0,8"/>
+
         <Label Content="Примечание" Grid.Row="9" Grid.Column="0" Margin="0,7,5,7" Height="30" Width="Auto" HorizontalAlignment="Left"/>
         <TextBox Text="{Binding SalesOrderHeader.Comment,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
                  Grid.Row="9"  Grid.Column="1" Grid.ColumnSpan="4" Height="30" Margin="0,7"/>

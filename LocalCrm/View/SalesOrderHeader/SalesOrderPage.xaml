@@ -28,6 +28,9 @@
         <StackPanel Background="White" Grid.Row="1" Orientation="Horizontal">
             <Button Command="{Binding AddSalesOrderHeaderCommand}" 
             ToolTip="Добавить заказ" Style="{StaticResource AddButtonStyle}" />
+
+            <Button Command="{Binding ImportFromExcelCommand}" 
+            ToolTip="Добавить заказ" Style="{StaticResource AddButtonStyle}" />
         </StackPanel>
 
         <!--<view:PeriodControl  DataContext="{Binding ConditionViewModel}" Grid.Column="2"/>-->

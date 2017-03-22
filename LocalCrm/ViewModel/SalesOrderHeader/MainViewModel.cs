@@ -1,5 +1,6 @@
 ﻿using LocalCrm.Command;
 using LocalCrm.Event;
+using LocalCrm.Infrastructure;
 using LocalCrm.View.Services;
 using Microsoft.Practices.Prism.PubSubEvents;
 using System;
@@ -9,6 +10,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using System.Windows.Input;
 
 namespace LocalCrm.ViewModel
@@ -38,7 +40,28 @@ namespace LocalCrm.ViewModel
             SalesOrderHeaderEditViewModels = new ObservableCollection<ISalesOrderHeaderEditViewModel>();
             CloseSalesOrderHeaderTabCommand = new DelegateCommand(OnCloseSalesOrderHeaderTabExecute);
             AddSalesOrderHeaderCommand = new DelegateCommand(OnAddSalesOrderHeaderExecute);
+            ImportFromExcelCommand = new DelegateCommand(OnImportFromExcelExecute);
         }
+
+        private void OnImportFromExcelExecute(object obj)
+        {
+            var result = _messageDialogService.OpenFileDialog();
+            if (result)
+            {
+               var importResult = FileApiUtilites.GetDataFromXlsx(_messageDialogService.FilePath);
+                StringBuilder sb = new StringBuilder();
+                foreach (var item in importResult)
+                {
+                    sb.Append(string.Join("|", item));
+                }
+                System.Windows.Forms.MessageBox.Show(sb.ToString());
+                Load();
+            }
+             
+            
+        }
+
+        
         #endregion
 
         public void Load()
@@ -63,6 +86,8 @@ namespace LocalCrm.ViewModel
         public ICommand CloseSalesOrderHeaderTabCommand { get; private set; }
 
         public ICommand AddSalesOrderHeaderCommand { get; set; }
+
+        public ICommand ImportFromExcelCommand { get; set; }
 
         public INavigationViewModel NavigationViewModel { get; private set; }
 

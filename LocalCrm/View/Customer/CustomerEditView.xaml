@@ -13,6 +13,8 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
@@ -31,7 +33,15 @@
         <TextBox Grid.Row="2" Text="{Binding Customer.MiddleName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
                  Grid.Column="1" Height="30" Margin="0,7"/>
 
-        <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal" 
+        <Label Content="Телефон" Margin="0,5,5,5" Grid.Row="3" Height="30"/>
+        <TextBox Grid.Row="3" Text="{Binding SalesPerson.Phone,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                 Grid.Column="1" Height="30" Margin="0,7"/>
+
+        <Label Content="Дополнительная информация" Margin="0,5,5,5" Grid.Row="4" Height="30"/>
+        <TextBox Grid.Row="4" Text="{Binding SalesPerson.AdditionalContactInfo,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                 Grid.Column="1" Height="30" Margin="0,7"/>
+        
+        <StackPanel Grid.Row="6" Grid.ColumnSpan="2" Orientation="Horizontal" 
                     HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="40" Width="350">
             <Button Content="Сохранить" Command="{Binding SaveCommand}" Margin="5" Width="100"/>
             <Button Content="Отменить" Command="{Binding ResetCommand}" Margin="5" Width="100"/>

@@ -207,12 +207,23 @@ namespace LocalCrm.Wrapper
     public System.Nullable<System.DateTime> ModifiedDateOriginalValue => GetOriginalValue<System.Nullable<System.DateTime>>(nameof(ModifiedDate));
 
     public bool ModifiedDateIsChanged => GetIsChanged(nameof(ModifiedDate));
+
+
+        public System.Nullable<System.DateTime> OrderComplitDate
+        {
+            get { return GetValue<System.Nullable<System.DateTime>>(); }
+            set { SetValue(value); }
+        }
+
+        public System.Nullable<System.DateTime> OrderComplitDateOriginalValue => GetOriginalValue<System.Nullable<System.DateTime>>(nameof(OrderComplitDate));
+
+        public bool OrderComplitDateIsChanged => GetIsChanged(nameof(OrderComplitDate));
+
+
+
+        public CityWrapper City { get; private set; }
  
-    public CityWrapper City { get; private set; }
- 
-//    public PersonWrapper Person { get; private set; }
- 
-//    public PersonWrapper Person1 { get; private set; }
+
  
     public TransportCompanyWrapper TransportCompany { get; private set; }
     

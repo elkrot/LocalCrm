@@ -15,6 +15,7 @@ namespace LocalCrm.Model
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
+        public string Phone { get; set; }
         public string AdditionalContactInfo { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
      //   public virtual ICollection<SalesOrderHeader> SalesOrderHeaders { get; set; }

@@ -36,9 +36,18 @@ namespace LocalCrm.DataAccess.Mapping
                 .IsRequired()
                 .IsFixedLength()
                 .HasMaxLength(50).HasColumnAnnotation(
-        IndexAnnotation.AnnotationName,
-        new IndexAnnotation(
-            new IndexAttribute("IX_FIO", 3) { IsUnique = true }));
+                IndexAnnotation.AnnotationName,
+                new IndexAnnotation(
+                new IndexAttribute("IX_FIO", 3) { IsUnique = true }));
+
+
+            this.Property(t => t.Phone)
+            .IsFixedLength()
+            .HasMaxLength(150);
+
+            this.Property(t => t.AdditionalContactInfo)
+            .IsFixedLength()
+            .HasMaxLength(250);
 
             // Table & Column Mappings
             this.ToTable("Person");
@@ -46,6 +55,7 @@ namespace LocalCrm.DataAccess.Mapping
             this.Property(t => t.FirstName).HasColumnName("FirstName");
             this.Property(t => t.MiddleName).HasColumnName("MiddleName");
             this.Property(t => t.LastName).HasColumnName("LastName");
+            this.Property(t => t.Phone).HasColumnName("Phone");
             this.Property(t => t.AdditionalContactInfo).HasColumnName("AdditionalContactInfo");
             this.Property(t => t.ModifiedDate).HasColumnName("ModifiedDate");
         }

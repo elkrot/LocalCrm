@@ -47,8 +47,9 @@ namespace LocalCrm.DataAccess.Mapping
             this.Property(t => t.Status).HasColumnName("Status");
             this.Property(t => t.Comment).HasColumnName("Comment");
             this.Property(t => t.TrackNumber).HasColumnName("TrackNumber");
+            this.Property(t => t.OrderComplitDate).HasColumnName("OrderComplitDate");
             this.Property(t => t.ModifiedDate).HasColumnName("ModifiedDate");
-
+            
 
             // Relationships
             this.HasOptional(t => t.City)

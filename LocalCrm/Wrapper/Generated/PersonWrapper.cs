@@ -63,7 +63,20 @@ public partial class PersonWrapper<T> : ModelWrapper<T> where T: Person
 
     public bool AdditionalContactInfoIsChanged => GetIsChanged(nameof(AdditionalContactInfo));
 
-    public System.Nullable<System.DateTime> ModifiedDate
+
+        public System.String Phone
+        {
+            get { return GetValue<System.String>(); }
+            set { SetValue(value); }
+        }
+
+        public System.String PhoneOriginalValue => GetOriginalValue<System.String>(nameof(Phone));
+
+        public bool PhoneIsChanged => GetIsChanged(nameof(Phone));
+
+
+
+        public System.Nullable<System.DateTime> ModifiedDate
     {
       get { return GetValue<System.Nullable<System.DateTime>>(); }
       set { SetValue(value); }
