@@ -27,6 +27,7 @@ namespace LocalCrm.ViewModel
             IMessageDialogService messageDialogService,
             INavigationViewModel navigationViewModel,
             Func<ISalesOrderHeaderEditViewModel> salesOrderHeaderEditViewModelCreator
+            , ConditionViewModel conditionViewModel
             )
         {
             _eventAggregator = eventAggregator;
@@ -35,7 +36,8 @@ namespace LocalCrm.ViewModel
             _eventAggregator.GetEvent<SalesOrderDeletedEvent>().Subscribe(OnSalesOrderHeaderDeleted);
 
             NavigationViewModel = navigationViewModel;
-            
+            NavigationViewModel.ConditionViewModel = conditionViewModel;
+
             _salesOrderHeaderEditViewModelCreator = salesOrderHeaderEditViewModelCreator;
             SalesOrderHeaderEditViewModels = new ObservableCollection<ISalesOrderHeaderEditViewModel>();
             CloseSalesOrderHeaderTabCommand = new DelegateCommand(OnCloseSalesOrderHeaderTabExecute);

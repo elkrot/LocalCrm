@@ -15,6 +15,7 @@ namespace LocalCrm.ViewModel
 {
     public interface INavigationViewModel 
     {
+        ConditionViewModel ConditionViewModel { get; set; }
         void Load();
     }
 
@@ -25,9 +26,9 @@ namespace LocalCrm.ViewModel
         #region Constructor
         public NavigationViewModel(IEventAggregator eventAggregator,
           ILookupProvider<SalesOrderHeader> salesOrderHeaderLookupProvider
-            ,ConditionViewModel conditionViewModel)
+)
         {
-            ConditionViewModel = conditionViewModel;
+            
             _eventAggregator = eventAggregator;
             _eventAggregator.GetEvent<SalesOrderSavedEvent>().Subscribe(OnSalesOrderHeaderSaved);
             _eventAggregator.GetEvent<SalesOrderDeletedEvent>().Subscribe(OnSalesOrderHeaderDeleted);
@@ -55,7 +56,7 @@ namespace LocalCrm.ViewModel
             }
         }
         #endregion
-        public ConditionViewModel ConditionViewModel;
+        public ConditionViewModel ConditionViewModel { get; set; }
         public ObservableCollection<NavigationItemViewModel> NavigationItems { get; set; }
 
         #region OnSalesOrderHeaderDeleted

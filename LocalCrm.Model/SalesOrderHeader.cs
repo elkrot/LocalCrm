@@ -65,6 +65,7 @@ namespace LocalCrm.Model
                     case 1:return "Отправлен";
                     case 2:return "Получен клиентом";
                     case 3:return "Выполнен";
+                    case 4:return "Готов к отправке";
                     default:return "";
                 }
             } }

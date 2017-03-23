@@ -26,7 +26,7 @@ namespace LocalCrm.DataAccess
             yield return new Status { Id = 1, Name = "Отправлен" };
             yield return new Status { Id = 2, Name = "Получен клиентом" };
             yield return new Status { Id = 3, Name = "Выполнен" };
-            yield return new Status { Id = 3, Name = "Новый" };
+            yield return new Status { Id = 4, Name = "Готов к отправке" };
 
         }
         public IEnumerable<City> GetAllCities()

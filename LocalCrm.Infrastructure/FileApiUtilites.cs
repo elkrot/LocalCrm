@@ -30,20 +30,24 @@ namespace LocalCrm.Infrastructure
             range = xlWorkSheet.UsedRange;
             rw = range.Rows.Count;
             cl = range.Columns.Count;
-
+            var isEmptyRow = true;
 
             for (rCnt = 1; rCnt <= rw; rCnt++)
             {
+                isEmptyRow = true;
                 var row = new string[cl];
                 for (cCnt = 1; cCnt <= cl; cCnt++)
                 {
-                    if ((range.Cells[rCnt, cCnt] as Excel.Range) != null)
+                    if (range.Cells[rCnt, cCnt] != null && range.Cells[rCnt, cCnt].Value2 != null)
                     {
-                        str = (range.Cells[rCnt, cCnt] as Excel.Range).Value2;
+                        str = string.Format("{0}", (range.Cells[rCnt, cCnt] as Excel.Range).Value2);
+                        if (str != null) { 
                         row[cCnt - 1] = str;
+                            isEmptyRow = false;
+                        }
                     }
                 }
-                result.Add(row);
+                if(!isEmptyRow) result.Add(row);
             }
 
             xlWorkBook.Close(true, null, null);
