@@ -307,7 +307,26 @@ namespace LocalCrm.DataAccess
         #endregion
 
 
+        Customer GetCustomerByCondition(Expression<Func<Customer, bool>> where) {
+            using (var ds = new LocalCrmContext())
+            {
+                return ds.Customers.Where(where).FirstOrDefault();
+            }
+        }
 
+
+        City GetCityByCondition(Expression<Func<City, bool>> where) {
+            using (var ds = new LocalCrmContext())
+            {
+                return ds.Cities.Where(where).FirstOrDefault();
+            }
+        }
+        TransportCompany GetTransportCompanyByCondition(Expression<Func<TransportCompany, bool>> where) {
+            using (var ds = new LocalCrmContext())
+            {
+                return ds.TransportCompanies.Where(where).FirstOrDefault();
+            }
+        }
 
 
     }

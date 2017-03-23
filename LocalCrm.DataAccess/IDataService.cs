@@ -42,6 +42,9 @@ namespace LocalCrm.DataAccess
 
         IEnumerable<SalesOrderHeader> GetSalesOrdersByPeriod(DateTime dtFirst, DateTime dtLast);
 
+        Customer GetCustomerByCondition(Expression<Func<Customer, bool>> where);
+        City GetCityByCondition(Expression<Func<City, bool>> where);
+        TransportCompany GetTransportCompanyByCondition(Expression<Func<TransportCompany, bool>> where);
 
         IEnumerable<SalesOrderHeader> GetSalesOrdersByCondition(Expression<Func<SalesOrderHeader, bool>> where, Expression<Func<SalesOrderHeader, object>> orderby);
     }

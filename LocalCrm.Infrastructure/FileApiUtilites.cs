@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LocalCrm.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -9,6 +10,7 @@ namespace LocalCrm.Infrastructure
 {
     public static class FileApiUtilites
     {
+        public const int EXCEL_FILE_COLUMN_COUNT = 6;
         public static List<string[]> GetDataFromXlsx(string filepath)
         {
             Excel.Application xlApp;
@@ -56,6 +58,30 @@ namespace LocalCrm.Infrastructure
             Marshal.ReleaseComObject(xlWorkSheet);
             Marshal.ReleaseComObject(xlWorkBook);
             Marshal.ReleaseComObject(xlApp);
+            return result;
+        }
+
+        public static List<SalesOrderDto> GetSalesOrderDto(List<string[]> data) {
+            var result = new List<SalesOrderDto>();
+            foreach (var item in data)
+            {
+                if (item.Count() < EXCEL_FILE_COLUMN_COUNT) {
+                    throw new ArgumentException("Ошибка количество полей","data");
+                }
+                var dto = new SalesOrderDto();
+                dto.OrderNo = item[0];
+                decimal sum = 0;
+                decimal.TryParse(item[1],out sum);
+                dto.OrderTotal = sum;
+                dto.CustomerName = item[2];
+                dto.TransportCompanyName = item[3];
+                dto.CityName = item[4];
+                dto.Phone = item[5];
+                result.Add(dto);
+
+    }
+            
+
             return result;
         }
     }

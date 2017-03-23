@@ -12,6 +12,8 @@ namespace LocalCrm.DataProvider
     {
         TransportCompany GetTransportCompanyById(int id);
 
+        TransportCompany GetTransportCompanyByName(string name);
+
         MethodResult<int> SaveTransportCompany(TransportCompany transportCompany);
 
         MethodResult<int> DeleteTransportCompany(int id);

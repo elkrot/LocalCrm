@@ -44,6 +44,7 @@
     <Compile Include="City.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SalesOrderDto.cs" />
     <Compile Include="SalesOrderHeader.cs" />
     <Compile Include="Status.cs" />
     <Compile Include="TransportCompany.cs" />

@@ -33,6 +33,14 @@ namespace LocalCrm.DataProvider
             }
         }
 
+        public TransportCompany GetTransportCompanyByName(string name)
+        {
+            using (var dataService = _dataServiceCreator())
+            {
+                return dataService.GetTransportCompanyByCondition(x=>x.TransportCompanyName==name);
+            }
+        }
+
         public MethodResult<int> SaveTransportCompany(TransportCompany transportCompany)
         {
             using (var dataService = _dataServiceCreator())

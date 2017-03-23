@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using LocalCrm.Model;
 using LocalCrm.DataAccess;
 using LocalCrm.Infrastructure;
+using System.Linq.Expressions;
 
 namespace LocalCrm.DataProvider
 {
@@ -21,6 +22,14 @@ namespace LocalCrm.DataProvider
             using (var dataService = _dataServiceCreator())
             {
                 return dataService.DeleteCustomer(id);
+            }
+        }
+
+        public Customer GetCustomerByCondition(Expression<Func<Customer, bool>> where)
+        {
+            using (var dataService = _dataServiceCreator())
+            {
+                return dataService.GetCustomerByCondition(where);
             }
         }
 

@@ -73,6 +73,12 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LocalCrm.Model\LocalCrm.Model.csproj">
+      <Project>{dfa5e395-8134-4dae-90a4-56b1beb75bbd}</Project>
+      <Name>LocalCrm.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

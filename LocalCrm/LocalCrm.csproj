@@ -292,6 +292,7 @@
     <Compile Include="Wrapper\Generated\PersonWrapper.cs" />
     <Compile Include="Wrapper\Generated\SalesOrderHeaderWrapper.cs" />
     <Compile Include="Wrapper\Generated\TransportCompanyWrapper.cs" />
+    <Compile Include="Wrapper\Import\SalesOrderWrapper.cs" />
     <Page Include="Styles\Brushes.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

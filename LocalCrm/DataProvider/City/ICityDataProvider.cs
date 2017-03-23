@@ -11,6 +11,7 @@ namespace LocalCrm.DataProvider
     public interface ICityDataProvider
     {
         City GetCityById(int id);
+        City GetCityByName(string name);
 
         MethodResult<int> SaveCity(City city);
 

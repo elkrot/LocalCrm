@@ -33,11 +33,19 @@ namespace LocalCrm.DataProvider
             }
         }
 
-        public MethodResult<int> SaveCity(City transportCompany)
+        public City GetCityByName(string name)
         {
             using (var dataService = _dataServiceCreator())
             {
-                return dataService.SaveCity(transportCompany);
+                return dataService.GetCityByCondition(x=>x.CityName==name);
+            }
+        }
+
+        public MethodResult<int> SaveCity(City city)
+        {
+            using (var dataService = _dataServiceCreator())
+            {
+                return dataService.SaveCity(city);
             }
         }
     }
