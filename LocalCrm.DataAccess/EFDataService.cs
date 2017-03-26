@@ -328,6 +328,28 @@ namespace LocalCrm.DataAccess
             }
         }
 
+        Customer IDataService.GetCustomerByCondition(Expression<Func<Customer, bool>> where)
+        {
+            using (var ds = new LocalCrmContext())
+            {
+                return ds.Customers.Where(where).FirstOrDefault();
+            }
+        }
 
+        City IDataService.GetCityByCondition(Expression<Func<City, bool>> where)
+        {
+            using (var ds = new LocalCrmContext())
+            {
+                return ds.Cities.Where(where).FirstOrDefault();
+            }
+        }
+
+        TransportCompany IDataService.GetTransportCompanyByCondition(Expression<Func<TransportCompany, bool>> where)
+        {
+            using (var ds = new LocalCrmContext())
+            {
+                return ds.TransportCompanies.Where(where).FirstOrDefault();
+            }
+        }
     }
 }

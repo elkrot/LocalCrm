@@ -21,7 +21,7 @@ namespace LocalCrm.ViewModel
         private readonly IMessageDialogService _messageDialogService;
         private ISalesOrderHeaderEditViewModel _selectedSalesOrderHeaderEditViewModel;
         private Func<ISalesOrderHeaderEditViewModel> _salesOrderHeaderEditViewModelCreator;
-
+        public ConditionViewModel ConditionViewModel;
         #region Constructor
         public MainViewModel(IEventAggregator eventAggregator,
             IMessageDialogService messageDialogService,
@@ -36,7 +36,7 @@ namespace LocalCrm.ViewModel
             _eventAggregator.GetEvent<SalesOrderDeletedEvent>().Subscribe(OnSalesOrderHeaderDeleted);
 
             NavigationViewModel = navigationViewModel;
-            NavigationViewModel.ConditionViewModel = conditionViewModel;
+            ConditionViewModel = conditionViewModel;
 
             _salesOrderHeaderEditViewModelCreator = salesOrderHeaderEditViewModelCreator;
             SalesOrderHeaderEditViewModels = new ObservableCollection<ISalesOrderHeaderEditViewModel>();

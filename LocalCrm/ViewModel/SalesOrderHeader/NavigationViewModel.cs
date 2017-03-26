@@ -15,7 +15,7 @@ namespace LocalCrm.ViewModel
 {
     public interface INavigationViewModel 
     {
-        ConditionViewModel ConditionViewModel { get; set; }
+      // ConditionViewModel ConditionViewModel { get; set; }
         void Load();
     }
 
@@ -40,13 +40,20 @@ namespace LocalCrm.ViewModel
         #region Load
         public void Load()
         {
-            ConditionViewModel.Load();
+           /* _salesOrderLookupProvider.GetLookupWithCondition(
+     x => x.OrderDate >= ConditionViewModel.StartDate && x.OrderDate <= ConditionViewModel.EndDate
+    , y => y.OrderNo
+)
+ConditionViewModel.Load();
+ 
+             */
+
+
+
+            
             NavigationItems.Clear();
             foreach (var friendLookupItem in 
-                _salesOrderLookupProvider.GetLookupWithCondition(
-                     x=>x.OrderDate>= ConditionViewModel.StartDate && x.OrderDate <= ConditionViewModel.EndDate
-                    , y=>y.OrderNo
-                ))
+                _salesOrderLookupProvider.GetLookup())
             {
                 NavigationItems.Add(
                   new NavigationItemViewModel(
@@ -56,7 +63,7 @@ namespace LocalCrm.ViewModel
             }
         }
         #endregion
-        public ConditionViewModel ConditionViewModel { get; set; }
+        
         public ObservableCollection<NavigationItemViewModel> NavigationItems { get; set; }
 
         #region OnSalesOrderHeaderDeleted
