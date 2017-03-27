@@ -10,7 +10,7 @@ namespace LocalCrm.Infrastructure
 {
     public static class FileApiUtilites
     {
-        public const int EXCEL_FILE_COLUMN_COUNT = 6;
+        public const int EXCEL_FILE_COLUMN_COUNT = 7;
         #region GetDataFromXlsx
         public static List<string[]> GetDataFromXlsx(string filepath)
         {
@@ -35,7 +35,7 @@ namespace LocalCrm.Infrastructure
             cl = range.Columns.Count;
             var isEmptyRow = true;
 
-            for (rCnt = 1; rCnt <= rw; rCnt++)
+            for (rCnt = 2; rCnt <= rw; rCnt++)
             {
                 isEmptyRow = true;
                 var row = new string[cl];
@@ -75,14 +75,36 @@ namespace LocalCrm.Infrastructure
                     throw new ArgumentException("Ошибка количество полей", "data");
                 }
                 var dto = new SalesOrderDto();
-                dto.OrderNo = item[0];
+
+                DateTime _orderDate = DateTime.MinValue;
+
+                string value = item[0];
+
+                double dValue = 0;
+
+                double.TryParse(value, out dValue);
+
+                if (value != null)
+                {
+                    if (dValue>0)
+                    {
+                        _orderDate = DateTime.FromOADate(dValue);
+                    }
+                    else
+                    {
+                        DateTime.TryParse(value, out _orderDate);
+                    }
+                }
+
+                dto.OrderDate = _orderDate;
+                dto.OrderNo = item[1];
                 decimal sum = 0;
-                decimal.TryParse(item[1], out sum);
+                decimal.TryParse(item[2], out sum);
                 dto.OrderTotal = sum;
-                dto.CustomerName = item[2];
-                dto.TransportCompanyName = item[3];
-                dto.CityName = item[4];
-                dto.Phone = item[5];
+                dto.CustomerName = item[3];
+                dto.TransportCompanyName = item[4];
+                dto.CityName = item[5];
+                dto.Phone = item[6];
                 result.Add(dto);
 
             }

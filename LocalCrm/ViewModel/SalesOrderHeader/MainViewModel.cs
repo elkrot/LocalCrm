@@ -1,7 +1,10 @@
 ﻿using LocalCrm.Command;
+using LocalCrm.DataProvider;
 using LocalCrm.Event;
 using LocalCrm.Infrastructure;
+using LocalCrm.Model;
 using LocalCrm.View.Services;
+using LocalCrm.Wrapper.Import;
 using Microsoft.Practices.Prism.PubSubEvents;
 using System;
 using System.Collections.Generic;
@@ -22,12 +25,21 @@ namespace LocalCrm.ViewModel
         private ISalesOrderHeaderEditViewModel _selectedSalesOrderHeaderEditViewModel;
         private Func<ISalesOrderHeaderEditViewModel> _salesOrderHeaderEditViewModelCreator;
         public ConditionViewModel ConditionViewModel;
+
+        ICityDataProvider _cityDataProvider;
+        ICustomerDataProvider _customerDataProvider;
+        ITransportCompanyDataProvider _transportCompanyDataProvider;
+
+
         #region Constructor
         public MainViewModel(IEventAggregator eventAggregator,
             IMessageDialogService messageDialogService,
             INavigationViewModel navigationViewModel,
             Func<ISalesOrderHeaderEditViewModel> salesOrderHeaderEditViewModelCreator
             , ConditionViewModel conditionViewModel
+            , ICityDataProvider cityDataProvider,
+              ICustomerDataProvider customerDataProvider,
+              ITransportCompanyDataProvider transportCompanyDataProvider
             )
         {
             _eventAggregator = eventAggregator;
@@ -43,6 +55,12 @@ namespace LocalCrm.ViewModel
             CloseSalesOrderHeaderTabCommand = new DelegateCommand(OnCloseSalesOrderHeaderTabExecute);
             AddSalesOrderHeaderCommand = new DelegateCommand(OnAddSalesOrderHeaderExecute);
             ImportFromExcelCommand = new DelegateCommand(OnImportFromExcelExecute);
+
+            _cityDataProvider= cityDataProvider;
+            _customerDataProvider= customerDataProvider;
+            _transportCompanyDataProvider= transportCompanyDataProvider;
+
+
         }
 
         private void OnImportFromExcelExecute(object obj)
@@ -51,11 +69,28 @@ namespace LocalCrm.ViewModel
             if (result)
             {
                var importResult = FileApiUtilites.GetDataFromXlsx(_messageDialogService.FilePath);
+
+                var salesOrders = FileApiUtilites.GetSalesOrderDto(importResult);
+
+
                 StringBuilder sb = new StringBuilder();
-                foreach (var item in importResult)
+                var sowList = new List<SalesOrderWrapper>();
+                foreach (var item in salesOrders)
                 {
-                    sb.Append(string.Join("|", item));
+                    var sow = new SalesOrderWrapper(item, _cityDataProvider, _customerDataProvider, _transportCompanyDataProvider);
+                    sowList.Add(sow);
                 }
+
+
+                foreach (var item in sowList)
+                {
+
+                    SalesOrderHeader so = new SalesOrderHeader() { OrderNo = item.OrderNo, OrderDate = item.OrderDate, City = item.City };
+                    //sb.AppendLine(string.Format("{0} {1:d} {2}", , item.OrderDate,item.City.CityId));
+                }
+
+
+
                 System.Windows.Forms.MessageBox.Show(sb.ToString());
                 Load();
             }

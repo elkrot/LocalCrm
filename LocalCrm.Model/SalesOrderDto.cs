@@ -9,6 +9,8 @@ namespace LocalCrm.Model
     public class SalesOrderDto
     {
         //       № заказа 
+        public DateTime OrderDate;
+        //       № заказа 
         public string OrderNo;
         //     Сумма 
         public decimal OrderTotal;
