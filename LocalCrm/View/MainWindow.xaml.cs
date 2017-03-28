@@ -27,6 +27,7 @@ namespace LocalCrm
             InitializeComponent();
             _salesOrderViewModel = viewModel;
             _referencesViewModel = refViewModel;
+            _salesOrderViewModel.ConditionViewModel.Load();
             DataContext = _salesOrderViewModel;
         }
 

@@ -24,7 +24,7 @@ namespace LocalCrm.ViewModel
         private readonly IMessageDialogService _messageDialogService;
         private ISalesOrderHeaderEditViewModel _selectedSalesOrderHeaderEditViewModel;
         private Func<ISalesOrderHeaderEditViewModel> _salesOrderHeaderEditViewModelCreator;
-        public ConditionViewModel ConditionViewModel;
+        public ConditionViewModel ConditionViewModel { get; private set; }
 
         ICityDataProvider _cityDataProvider;
         ICustomerDataProvider _customerDataProvider;
