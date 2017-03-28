@@ -103,6 +103,7 @@ namespace LocalCrm.ViewModel
 
         public void Load()
         {
+            ConditionViewModel.Load();
             NavigationViewModel.Load();
             
         }
