@@ -15,7 +15,7 @@ namespace LocalCrm.ViewModel
 {
     public interface INavigationViewModel 
     {
-      // ConditionViewModel ConditionViewModel { get; set; }
+       ConditionViewModel ConditionViewModel { get; set; }
         void Load();
     }
 
@@ -23,6 +23,8 @@ namespace LocalCrm.ViewModel
     {
         private readonly IEventAggregator _eventAggregator;
         private readonly ILookupProvider<SalesOrderHeader> _salesOrderLookupProvider;
+
+        public ConditionViewModel ConditionViewModel { get; set; }
         #region Constructor
         public NavigationViewModel(IEventAggregator eventAggregator,
           ILookupProvider<SalesOrderHeader> salesOrderHeaderLookupProvider
@@ -40,20 +42,29 @@ namespace LocalCrm.ViewModel
         #region Load
         public void Load()
         {
-           /* _salesOrderLookupProvider.GetLookupWithCondition(
+
+            IEnumerable<LookupItem> items;
+
+            if (ConditionViewModel != null)
+            {
+                ConditionViewModel.Load();
+                items = _salesOrderLookupProvider.GetLookupWithCondition(
      x => x.OrderDate >= ConditionViewModel.StartDate && x.OrderDate <= ConditionViewModel.EndDate
-    , y => y.OrderNo
-)
-ConditionViewModel.Load();
- 
-             */
+    , y => y.OrderNo);
+
+            }else
+            {
+                items = _salesOrderLookupProvider.GetLookup();
+
+            }
+
 
 
 
             
             NavigationItems.Clear();
             foreach (var friendLookupItem in 
-                _salesOrderLookupProvider.GetLookup())
+                items)
             {
                 NavigationItems.Add(
                   new NavigationItemViewModel(

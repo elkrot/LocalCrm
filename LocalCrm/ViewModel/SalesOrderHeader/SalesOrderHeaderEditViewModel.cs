@@ -70,8 +70,7 @@ namespace LocalCrm.ViewModel
         }
 
 
-
-
+        #region SalesOrderHeader
         public SalesOrderHeaderWrapper SalesOrderHeader
         {
             get
@@ -79,7 +78,11 @@ namespace LocalCrm.ViewModel
                 return _salesOrderHeader;
             }
         }
+        #endregion
 
+
+
+        #region Load
         public void Load(int? SalesOrderHeaderId = default(int?))
         {
             CityLookup = _cityLookupProvider.GetLookup();
@@ -103,6 +106,8 @@ namespace LocalCrm.ViewModel
                 }
             };
         }
+        #endregion
+        
 
         
              public IEnumerable<LookupItem> TransportCompanyLookupProvider

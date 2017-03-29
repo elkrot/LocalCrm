@@ -82,12 +82,12 @@ return base.SaveChanges();
             catch (DbEntityValidationException ex)
             {
                 var error = ex.EntityValidationErrors.First().ValidationErrors.First();
-                result.AddErrorMessage("Ошибка валидации");
+                result.AddErrorMessage(string.Format("Ошибка валидации {0}",ex.Message));
             }
-            catch (DbUpdateException )
+            catch (DbUpdateException ex)
             {
-                
-                result.AddErrorMessage("Ошибка сохранения в БД");
+                string innerEx = ex.InnerException == null?"" : ex.InnerException.Message;
+                result.AddErrorMessage(string.Format("Ошибка сохранения в БД {0} {1}", ex.Message,innerEx));
             }
             catch (System.Exception ex)
             {

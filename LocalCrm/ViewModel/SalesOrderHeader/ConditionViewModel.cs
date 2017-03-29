@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LocalCrm.ViewModel
 {
-    public class ConditionViewModel :  Observable
+    public class ConditionViewModel : Observable
     {
         public DateTime EndDate { get; set; }
 
@@ -14,8 +14,11 @@ namespace LocalCrm.ViewModel
 
         public void Load()
         {
-            StartDate = DateTime.Today;
-            EndDate = DateTime.MaxValue;
+            if (StartDate == null || StartDate == DateTime.MinValue)
+            {
+                StartDate = DateTime.Today.AddMonths(-1);
+                EndDate = DateTime.Today.AddDays(1);
+            }
         }
     }
 }

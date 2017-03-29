@@ -29,8 +29,12 @@
             <Button Command="{Binding AddSalesOrderHeaderCommand}" 
             ToolTip="Добавить заказ" Style="{StaticResource AddButtonStyle}" />
 
+
             <Button Command="{Binding ImportFromExcelCommand}" 
-            ToolTip="Добавить заказ" Style="{StaticResource AddButtonStyle}" />
+            ToolTip="Добавить заказы из файла"  Width="36" Height="36">
+                <Image Source="/LocalCrm;component/img/price.png" Width="50" Margin="0"/>
+                
+            </Button>
         </StackPanel>
 
         <!--<view:PeriodControl  DataContext="{Binding ConditionViewModel}" Grid.Column="2"/>-->

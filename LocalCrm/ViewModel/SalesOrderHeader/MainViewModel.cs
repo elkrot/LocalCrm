@@ -20,6 +20,7 @@ namespace LocalCrm.ViewModel
 {
     public class MainViewModel : Observable
     {
+        private readonly ISalesOrderDataProvider _salesOrderDataProvider;
         private readonly IEventAggregator _eventAggregator;
         private readonly IMessageDialogService _messageDialogService;
         private ISalesOrderHeaderEditViewModel _selectedSalesOrderHeaderEditViewModel;
@@ -39,7 +40,8 @@ namespace LocalCrm.ViewModel
             , ConditionViewModel conditionViewModel
             , ICityDataProvider cityDataProvider,
               ICustomerDataProvider customerDataProvider,
-              ITransportCompanyDataProvider transportCompanyDataProvider
+              ITransportCompanyDataProvider transportCompanyDataProvider,
+              ISalesOrderDataProvider salesOrderDataProvider
             )
         {
             _eventAggregator = eventAggregator;
@@ -50,15 +52,17 @@ namespace LocalCrm.ViewModel
             NavigationViewModel = navigationViewModel;
             ConditionViewModel = conditionViewModel;
 
+            _salesOrderDataProvider = salesOrderDataProvider;
+
             _salesOrderHeaderEditViewModelCreator = salesOrderHeaderEditViewModelCreator;
             SalesOrderHeaderEditViewModels = new ObservableCollection<ISalesOrderHeaderEditViewModel>();
             CloseSalesOrderHeaderTabCommand = new DelegateCommand(OnCloseSalesOrderHeaderTabExecute);
             AddSalesOrderHeaderCommand = new DelegateCommand(OnAddSalesOrderHeaderExecute);
             ImportFromExcelCommand = new DelegateCommand(OnImportFromExcelExecute);
 
-            _cityDataProvider= cityDataProvider;
-            _customerDataProvider= customerDataProvider;
-            _transportCompanyDataProvider= transportCompanyDataProvider;
+            _cityDataProvider = cityDataProvider;
+            _customerDataProvider = customerDataProvider;
+            _transportCompanyDataProvider = transportCompanyDataProvider;
 
 
         }
@@ -68,7 +72,7 @@ namespace LocalCrm.ViewModel
             var result = _messageDialogService.OpenFileDialog();
             if (result)
             {
-               var importResult = FileApiUtilites.GetDataFromXlsx(_messageDialogService.FilePath);
+                var importResult = FileApiUtilites.GetDataFromXlsx(_messageDialogService.FilePath);
 
                 var salesOrders = FileApiUtilites.GetSalesOrderDto(importResult);
 
@@ -81,31 +85,54 @@ namespace LocalCrm.ViewModel
                     sowList.Add(sow);
                 }
 
-
+                int i = 0;
+                int z = 0;
+                bool fire = false;
                 foreach (var item in sowList)
                 {
 
                     SalesOrderHeader so = new SalesOrderHeader() { OrderNo = item.OrderNo, OrderDate = item.OrderDate, City = item.City };
+                    var res = _salesOrderDataProvider.SaveSalesOrderHeader(so);
+                    if (!res.Success)
+                    {
+                        z++;
+                        fire = true;
+                        foreach (var msg in res.Messages)
+                        {
+                            sb.AppendLine(string.Format("{0}", msg));
+                        }
+
+                    }
+                    else
+                    {
+                        i++;
+                    }
                     //sb.AppendLine(string.Format("{0} {1:d} {2}", , item.OrderDate,item.City.CityId));
                 }
 
+                if (fire)
+                {
 
 
-                System.Windows.Forms.MessageBox.Show(sb.ToString());
+                    System.Windows.Forms.MessageBox.Show(string.Format("Ошибочных записей {0}.{1}", z, sb.ToString()));
+                }
+
+                System.Windows.Forms.MessageBox.Show(string.Format("Добавлено {0} записей.", i));
                 Load();
             }
-             
-            
+
+
         }
 
-        
+
         #endregion
 
         public void Load()
         {
-            ConditionViewModel.Load();
+
+            NavigationViewModel.ConditionViewModel = ConditionViewModel;
             NavigationViewModel.Load();
-            
+
         }
 
         #region OnClosing
@@ -129,7 +156,7 @@ namespace LocalCrm.ViewModel
 
         public INavigationViewModel NavigationViewModel { get; private set; }
 
-        
+
 
         // Those ViewModels represent the Tab-Pages in the UI
         public ObservableCollection<ISalesOrderHeaderEditViewModel> SalesOrderHeaderEditViewModels { get; private set; }
