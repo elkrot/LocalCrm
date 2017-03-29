@@ -51,6 +51,7 @@ namespace LocalCrm.ViewModel
 
             NavigationViewModel = navigationViewModel;
             ConditionViewModel = conditionViewModel;
+            NavigationViewModel.ConditionViewModel = ConditionViewModel;
 
             _salesOrderDataProvider = salesOrderDataProvider;
 
@@ -59,12 +60,17 @@ namespace LocalCrm.ViewModel
             CloseSalesOrderHeaderTabCommand = new DelegateCommand(OnCloseSalesOrderHeaderTabExecute);
             AddSalesOrderHeaderCommand = new DelegateCommand(OnAddSalesOrderHeaderExecute);
             ImportFromExcelCommand = new DelegateCommand(OnImportFromExcelExecute);
-
+            ChangePeriodCommand = new DelegateCommand(OnChangePeriodExecute);
             _cityDataProvider = cityDataProvider;
             _customerDataProvider = customerDataProvider;
             _transportCompanyDataProvider = transportCompanyDataProvider;
 
 
+        }
+
+        private void OnChangePeriodExecute(object obj)
+        {
+            NavigationViewModel.Load();
         }
 
         private void OnImportFromExcelExecute(object obj)
@@ -91,7 +97,13 @@ namespace LocalCrm.ViewModel
                 foreach (var item in sowList)
                 {
 
-                    SalesOrderHeader so = new SalesOrderHeader() { OrderNo = item.OrderNo, OrderDate = item.OrderDate, City = item.City };
+                    SalesOrderHeader so = new SalesOrderHeader()
+                    { OrderNo = item.OrderNo
+                    , OrderDate = item.OrderDate
+                    , City = item.City
+                    , Customer = item.Customer
+                    , OrderTotal=item.OrderTotal
+                    ,TransportCompany= item.TransportCompany};
                     var res = _salesOrderDataProvider.SaveSalesOrderHeader(so);
                     if (!res.Success)
                     {
@@ -130,7 +142,7 @@ namespace LocalCrm.ViewModel
         public void Load()
         {
 
-            NavigationViewModel.ConditionViewModel = ConditionViewModel;
+            
             NavigationViewModel.Load();
 
         }
@@ -153,6 +165,8 @@ namespace LocalCrm.ViewModel
         public ICommand AddSalesOrderHeaderCommand { get; set; }
 
         public ICommand ImportFromExcelCommand { get; set; }
+
+        public ICommand ChangePeriodCommand { get; set; }
 
         public INavigationViewModel NavigationViewModel { get; private set; }
 

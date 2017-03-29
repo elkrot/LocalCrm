@@ -21,11 +21,11 @@
 
         <Label Content="Дата с " Grid.Column="0" HorizontalAlignment="Center"/>
         <DatePicker SelectedDate="{Binding StartDate,Mode=TwoWay,
-            UpdateSourceTrigger=PropertyChanged}"  Height="30" Margin="0,8"
+            UpdateSourceTrigger=PropertyChanged}" DataContextChanged="{Binding ChangePeriodCommand}" Height="30" Margin="0,8"
                 Grid.Column="1"/>
         <Label Content=" по " Grid.Column="2" HorizontalAlignment="Center"/>
         <DatePicker SelectedDate="{Binding EndDate,Mode=TwoWay,
-            UpdateSourceTrigger=PropertyChanged}"  Height="30" Margin="0,8"
+            UpdateSourceTrigger=PropertyChanged}" DataContextChanged="{Binding ChangePeriodCommand}" Height="30" Margin="0,8"
                 Grid.Column="3"/>
     </Grid>
 </UserControl>
