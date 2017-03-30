@@ -37,10 +37,14 @@ namespace LocalCrm.Wrapper.Import
             get
             {
                 string[] fio = Model.CustomerName.Split(' ');
+                string lastName = fio[0];
+                string firstName = fio[1];
+                string middleName = fio[2];
+
                Customer customer = _customerDataProvider.GetCustomerByCondition(
-                    x=>x.LastName==fio[0] && x.FirstName==fio[1] && x.MiddleName==fio[2]);
+                    x=>x.LastName== lastName && x.FirstName== firstName && x.MiddleName== middleName);
                 if (customer == null) {
-                    customer = new Customer() { LastName = fio[0] , FirstName = fio[1],MiddleName = fio[2] };
+                    customer = new Customer() { LastName = lastName, FirstName = firstName, MiddleName = middleName };
                     _customerDataProvider.SaveCustomer(customer);
                 }
                 return customer;
@@ -66,8 +70,9 @@ public City City
         {
             get
             {
+                var cityName = Model.CityName;
                 City city = _cityDataProvider.GetCityByName(
-                 Model.CityName);
+                 cityName.Trim());
                 if (city == null)
                 {
                     city = new City() { CityName = Model.CityName };

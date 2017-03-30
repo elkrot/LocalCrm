@@ -87,7 +87,9 @@ return base.SaveChanges();
             catch (DbUpdateException ex)
             {
                 string innerEx = ex.InnerException == null?"" : ex.InnerException.Message;
-                result.AddErrorMessage(string.Format("Ошибка сохранения в БД {0} {1}", ex.Message,innerEx));
+                string innerEx2 = ex.InnerException.InnerException == null ? "" : ex.InnerException.InnerException.Message;
+
+                result.AddErrorMessage(string.Format("Ошибка сохранения в БД {0} {1} {2}", ex.Message,innerEx, innerEx2));
             }
             catch (System.Exception ex)
             {
