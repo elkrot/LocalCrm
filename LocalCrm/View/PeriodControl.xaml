@@ -25,7 +25,7 @@
                 Grid.Column="1"/>
         <Label Content=" по " Grid.Column="2" HorizontalAlignment="Center"/>
         <DatePicker SelectedDate="{Binding EndDate,Mode=TwoWay,
-            UpdateSourceTrigger=PropertyChanged}"   Height="30" Margin="0,8"
+            UpdateSourceTrigger=PropertyChanged}" SelectedDateChanged="DatePicker_SelectedDateChanged"  Height="30" Margin="0,8"
                 Grid.Column="3"/>
     </Grid>
 </UserControl>

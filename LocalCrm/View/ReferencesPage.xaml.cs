@@ -37,5 +37,7 @@ namespace LocalCrm
              DataContext = _referencesViewModel;
 
         }
+
+
     }
 }

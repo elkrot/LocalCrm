@@ -24,5 +24,10 @@ namespace LocalCrm.View
         {
             InitializeComponent();
         }
+
+        private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

@@ -44,6 +44,7 @@ namespace LocalCrm
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            _referencesViewModel.Load();
             Main.Content = new ReferencesPage(_referencesViewModel);
         }
 
@@ -55,6 +56,11 @@ namespace LocalCrm
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
 
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            _salesOrderViewModel.Load();
         }
     }
 }

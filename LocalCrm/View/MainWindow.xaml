@@ -41,6 +41,9 @@
 
                 </Button>
                 <view:PeriodControl DataContext="{Binding ConditionViewModel}" Width="546" />
+                <Button  Click="Button_Click_2">
+                    <Image Width="50" Margin="0" Source="/LocalCrm;component/img/filter.png"/>
+                </Button>
                 <!--<TextBox Foreground="LightGray" Width="100">Поиск...</TextBox>-->
             </ToolBar>
             <!--<ToolBar>

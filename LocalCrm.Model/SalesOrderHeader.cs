@@ -43,20 +43,21 @@ namespace LocalCrm.Model
 
         [NotMapped]
         public string SalesPersonName { get {
-                return string.Format("{0} {1} {2}"
+                return SalesPerson==null?"":string.Format("{0} {1} {2}"
                     ,SalesPerson.LastName.Trim()
                     , SalesPerson.FirstName.Trim()
                     , SalesPerson.MiddleName.Trim()); } }
 
         [NotMapped]
-        public string CustomerName { get { return string.Format("{0} {1} {2}"
+        public string CustomerName { get { return Customer == null ? "" : string.Format("{0} {1} {2}"
                     , Customer.LastName.Trim()
                     , Customer.FirstName.Trim()
                     , Customer.MiddleName.Trim());
             } }
 
         [NotMapped]
-        public string TransportCompanyName { get { return TransportCompany.TransportCompanyName; } }
+        public string TransportCompanyName { get {
+                return TransportCompany == null ? "" : TransportCompany.TransportCompanyName; } }
        
         [NotMapped]
         public string StatusName

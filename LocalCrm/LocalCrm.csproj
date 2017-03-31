@@ -494,6 +494,7 @@
     <Resource Include="img\favIco.png" />
     <Resource Include="img\favIco.ico" />
     <Resource Include="img\price.png" />
+    <Resource Include="img\filter.png" />
     <Content Include="Wrapper\Generated\GenerateModelWrappers.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateModelWrappers.cs</LastGenOutput>
