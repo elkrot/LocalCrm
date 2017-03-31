@@ -25,6 +25,8 @@ namespace LocalCrm.Model
         public Nullable<int> Status { get; set; }
 
         public string TrackNumber { get; set; }
+
+        public string PhoneNumber { get; set; }
         public string Comment { get; set; }
         public Nullable<System.DateTime> OrderComplitDate { get; set; }
 

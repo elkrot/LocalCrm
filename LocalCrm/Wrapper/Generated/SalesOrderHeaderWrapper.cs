@@ -42,13 +42,24 @@ namespace LocalCrm.Wrapper
 
         public System.String TrackNumberOriginalValue => GetOriginalValue<System.String>(nameof(TrackNumber));
 
-        public bool TrackNumberIsChanged => GetIsChanged(nameof(OrderNo));
+        public bool TrackNumberIsChanged => GetIsChanged(nameof(TrackNumber));
         #endregion
 
-        
+        #region PhoneNumber
+        public System.String PhoneNumber
+        {
+            get { return GetValue<System.String>(); }
+            set { SetValue(value); }
+        }
+
+        public System.String PhoneNumberOriginalValue => GetOriginalValue<System.String>(nameof(PhoneNumber));
+
+        public bool PhoneNumberIsChanged => GetIsChanged(nameof(PhoneNumber));
+        #endregion
 
 
-    public System.DateTime OrderDate
+
+        public System.DateTime OrderDate
     {
       get { return GetValue<System.DateTime>(); }
       set { SetValue(value); }

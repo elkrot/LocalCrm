@@ -31,6 +31,8 @@ namespace LocalCrm.Wrapper.Import
         public DateTime OrderDate { get { return Model.OrderDate; } }
         //     Сумма 
         public decimal OrderTotal { get { return Model.OrderTotal; } }
+
+        public string PhoneNumber { get { return Model.Phone; } }
         //     Получатель 
         public Customer Customer
         {

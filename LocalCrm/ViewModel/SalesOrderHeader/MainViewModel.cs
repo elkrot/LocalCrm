@@ -94,16 +94,21 @@ namespace LocalCrm.ViewModel
                 int i = 0;
                 int z = 0;
                 bool fire = false;
+
+
                 foreach (var item in sowList)
                 {
 
                     SalesOrderHeader so = new SalesOrderHeader()
                     { OrderNo = item.OrderNo
                     , OrderDate = item.OrderDate
-                    , City = item.City
-                    , Customer = item.Customer
+                    , CityId = item.City.CityId
+                    , CustomerId = item.Customer.PersonId
                     , OrderTotal=item.OrderTotal
-                    ,TransportCompany= item.TransportCompany};
+                    ,TransportCompanyId= item.TransportCompany.TransportCompanyId
+                    , PhoneNumber =item.PhoneNumber};
+
+                    
                     var res = _salesOrderDataProvider.SaveSalesOrderHeader(so);
                     if (!res.Success)
                     {

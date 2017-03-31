@@ -6,6 +6,8 @@ using System.Data.Entity.Validation;
 using System.Linq;
 using System.Data.SqlClient;
 using System.Data.Entity.Infrastructure;
+using System;
+using System.Collections.Generic;
 
 namespace LocalCrm.DataAccess
 {//DropCreateDatabaseAlways
@@ -13,19 +15,42 @@ namespace LocalCrm.DataAccess
     {
         protected override void Seed(LocalCrmContext db)
         {
-           
-               var customer = new Customer() { FirstName = "FirstName", MiddleName = "MiddleName", LastName = "Customer" };
-                 db.Customers.Add(customer);
-                 var salesPerson = new SalesPerson() { FirstName = "FirstName", MiddleName = "MiddleName", LastName = "SalesPerson" };
-                 db.SalesPersons.Add(salesPerson);
+
+          /*  var customer = new Customer() { FirstName = "FirstName", MiddleName = "MiddleName", LastName = "Customer" };
+            db.Customers.Add(customer);
+            var salesPerson = new SalesPerson() { FirstName = "FirstName", MiddleName = "MiddleName", LastName = "SalesPerson" };
+            db.SalesPersons.Add(salesPerson);
             TransportCompany tk = new TransportCompany() { TransportCompanyName = "Новая почта" };
             db.TransportCompanies.Add(tk);
-            City c = new City() { CityName = "Комсосольск" };
+            City c = new City() { CityName = "Комсомольск" };
             db.Cities.Add(c);
-                 db.SaveChanges();
+           // db.SaveChanges();
+            SalesOrderHeader so = new SalesOrderHeader() {
+                OrderNo = "a1",OrderDate = DateTime.Today,OrderTotal = 100M,City = c,Customer = customer,SalesPerson = salesPerson};
+            SalesOrderHeader so2 = new SalesOrderHeader()
+            {
+                OrderNo = "a2",
+                OrderDate = DateTime.Today,
+                OrderTotal = 130M,
+                City = c,
+                Customer = customer,
+                SalesPerson = salesPerson
+            };
+            SalesOrderHeader so3 = new SalesOrderHeader()
+            {
+                OrderNo = "a3",
+                OrderDate = DateTime.Today,
+                OrderTotal = 150M,
+                City = c,
+                Customer = customer,
+                SalesPerson = salesPerson
+            };
+            db.SalesOrderHeaders.AddRange(new List<SalesOrderHeader>() { so,so3,so2});
+            db.SaveChanges();
+            */
 
 
-           
+
         }
     }
     public partial class LocalCrmContext : DbContext

@@ -26,6 +26,10 @@ namespace LocalCrm.DataAccess.Mapping
             this.Property(t => t.TrackNumber)
                 .HasMaxLength(30);
 
+            this.Property(t => t.PhoneNumber)
+                .HasMaxLength(30);
+
+
 
             // Table & Column Mappings
             this.ToTable("SalesOrderHeader");
@@ -47,6 +51,7 @@ namespace LocalCrm.DataAccess.Mapping
             this.Property(t => t.Status).HasColumnName("Status");
             this.Property(t => t.Comment).HasColumnName("Comment");
             this.Property(t => t.TrackNumber).HasColumnName("TrackNumber");
+            this.Property(t => t.PhoneNumber).HasColumnName("PhoneNumber");            
             this.Property(t => t.OrderComplitDate).HasColumnName("OrderComplitDate");
             this.Property(t => t.ModifiedDate).HasColumnName("ModifiedDate");
             
