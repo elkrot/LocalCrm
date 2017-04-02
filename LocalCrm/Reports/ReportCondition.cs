@@ -5,12 +5,14 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using LocalCrm.Infrastructure;
 
 namespace LocalCrm.Reports
 {
     public interface IReportCondition
     {
-
+        /* get { return ConfigManager.getInstance().OrdersStartDate; }
+            set { ConfigManager.getInstance().OrdersStartDate = value; }*/
         DateTime StartDate { get; set; }
         DateTime EndDate { get; set; }
 
@@ -25,9 +27,15 @@ namespace LocalCrm.Reports
             _startDate = startDate;
             _endDate = endDate;
         }
-        public DateTime _endDate { get; set; }
+        public DateTime _endDate {
+            get { return ConfigManager.getInstance().ReportsEndDate; }
+            set { ConfigManager.getInstance().ReportsEndDate = value; }
+        }
 
-        public DateTime _startDate { get; set; }
+        public DateTime _startDate {
+            get { return ConfigManager.getInstance().ReportsStartDate; }
+            set { ConfigManager.getInstance().ReportsStartDate = value; }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

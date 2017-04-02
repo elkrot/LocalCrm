@@ -17,6 +17,7 @@
             <Button Click="Button_Click" Width="Auto" Margin="15,2,15,2">по дате</Button>
             <Button Width="Auto" Margin="15,2,15,2" Click="Button_Click_1">по трансп компаниям</Button>
             <Button Width="Auto" Margin="15,2,15,2" Click="Button_Click_2">по статусам</Button>
+            
         </StackPanel>
     </Grid>
 </Page>

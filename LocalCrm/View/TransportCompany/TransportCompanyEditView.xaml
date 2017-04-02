@@ -4,22 +4,23 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:LocalCrm.View"
-             mc:Ignorable="d" d:DesignWidth="375" Height="115">
+             mc:Ignorable="d" d:DesignWidth="625" Height="215">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="10"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition  Width="250"/>
+            <ColumnDefinition Width="350"/>
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <Label Content="Наименование компании" Margin="0,5,5,5" Grid.Row="0" Height="30"/>
-        <TextBox Grid.Row="0" Text="{Binding TransportCompany.TransportCompanyName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
-                 Grid.Column="1" Height="30" Margin="0,7"/>
+        <Label Content="Наименование компании" Grid.Column="0" Grid.Row="0" />
+        <TextBox Text="{Binding TransportCompany.TransportCompanyName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                 Grid.Column="1" Height="30" Grid.Row="0" />
 
         <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Left" 
                     VerticalAlignment="Bottom" Height="40" Width="355">

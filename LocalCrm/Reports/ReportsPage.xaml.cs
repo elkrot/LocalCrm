@@ -55,5 +55,9 @@ namespace LocalCrm
         {
             ShowReport(@"LocalCrm.Reports.ReportByStatus.rdlc", "Orders");
         }
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            ShowReport(@"LocalCrm.Reports.Report1.rdlc", "Orders");
+        }
     }
 }

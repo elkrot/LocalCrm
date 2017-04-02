@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LocalCrm.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,20 @@ namespace LocalCrm.ViewModel
 {
     public class ConditionViewModel : Observable
     {
-        public DateTime EndDate { get; set; }
+       
 
-        public DateTime StartDate { get; set; }
+        public DateTime EndDate {
+            get { return ConfigManager.getInstance().OrdersEndDate; }
+            set { ConfigManager.getInstance().OrdersEndDate = value; }
+
+           
+        }
+
+        public DateTime StartDate
+        {
+ get { return ConfigManager.getInstance().OrdersStartDate; }
+            set { ConfigManager.getInstance().OrdersStartDate = value; }
+        }
 
         public void Load()
         {

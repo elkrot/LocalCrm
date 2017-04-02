@@ -2,6 +2,7 @@
 using LocalCrm.DataAccess;
 using LocalCrm.Model;
 using LocalCrm.Startup;
+using LocalCrm.View;
 using LocalCrm.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -41,7 +42,8 @@ base.OnStartup(e);
             //MainWindow = new MainWindow();
             MainWindow.Show();
             _mainViewModel.Load();
-            _referencesViewModel.Load();
+               
+                _referencesViewModel.Load();
             }
             catch (Exception ex)
             {
