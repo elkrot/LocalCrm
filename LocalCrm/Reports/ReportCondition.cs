@@ -22,10 +22,13 @@ namespace LocalCrm.Reports
     }
     public class ReportCondition : IReportCondition,INotifyPropertyChanged
     {
-        public ReportCondition(DateTime startDate,DateTime endDate)
+        public ReportCondition()
         {
-            _startDate = startDate;
-            _endDate = endDate;
+            if (_startDate == DateTime.MinValue) { 
+                _startDate = DateTime.Today.Date;
+            _endDate = DateTime.Today.Date;
+            }
+         
         }
         public DateTime _endDate {
             get { return ConfigManager.getInstance().ReportsEndDate; }

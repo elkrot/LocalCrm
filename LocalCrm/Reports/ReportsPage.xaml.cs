@@ -25,7 +25,7 @@ namespace LocalCrm
         IReportCondition rc;
         public ReportsPage()
         {
-            rc = new ReportCondition(DateTime.Today.Date, DateTime.Today.Date);
+            rc = new ReportCondition();
             DataContext = rc;
             InitializeComponent();
         }

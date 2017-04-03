@@ -33,7 +33,7 @@
         <view:CityNavigationView DataContext="{Binding CityNavigationViewModel}" Grid.Row="2"/>
 
         <GridSplitter Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Width="3" Background="#FF95DAF3" HorizontalAlignment="Center"/>
-
+   
         <!--Tabs-->
         <TabControl ItemsSource="{Binding CityEditViewModels}"
                 SelectedItem="{Binding SelectedCityEditViewModel, Mode=TwoWay}" 
