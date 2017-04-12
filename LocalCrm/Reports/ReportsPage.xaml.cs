@@ -32,6 +32,7 @@ namespace LocalCrm
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+
             ShowReport(@"LocalCrm.Reports.ReportByDate.rdlc", "Orders");
         }
 
@@ -43,6 +44,9 @@ namespace LocalCrm
         private void ShowReport(string reportName,string dataStName) {
             rc.ReportName = reportName;
             rc.DataSetName = dataStName;
+
+            ReportConditionForm rcf = new ReportConditionForm();
+            rcf.ShowDialog();
             using (var dataService = new EFDataService())
             {
                 rc.DataSet = dataService.GetSalesOrdersByPeriod(rc.StartDate, rc.EndDate);

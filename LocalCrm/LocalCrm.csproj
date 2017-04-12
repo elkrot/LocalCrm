@@ -185,6 +185,9 @@
     <Compile Include="Event\TransportCompany\TransportCompanySavedEvent.cs" />
     <Compile Include="Reports\ObjectSource.cs" />
     <Compile Include="Reports\ReportCondition.cs" />
+    <Compile Include="Reports\ReportConditionForm.xaml.cs">
+      <DependentUpon>ReportConditionForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Reports\ReportsPage.xaml.cs">
       <DependentUpon>ReportsPage.xaml</DependentUpon>
     </Compile>
@@ -293,6 +296,10 @@
     <Compile Include="Wrapper\Generated\SalesOrderHeaderWrapper.cs" />
     <Compile Include="Wrapper\Generated\TransportCompanyWrapper.cs" />
     <Compile Include="Wrapper\Import\SalesOrderWrapper.cs" />
+    <Page Include="Reports\ReportConditionForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\Brushes.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
