@@ -10,8 +10,7 @@
     <Window.Resources>
         <DataTemplate x:Key="CheckBoxCell">
             <StackPanel Orientation="Horizontal">
-                <CheckBox IsChecked="{Binding Path=IsSelected, 
-          RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}}"/>
+                <CheckBox IsChecked="{Binding IsChecked}"/>
             </StackPanel>
         </DataTemplate>
     </Window.Resources>
@@ -22,35 +21,31 @@
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.RowSpan="2">
-            <ListView x:Name="lBTransportCompany" Height="100" ItemsSource="{Binding}">
+            <ListView x:Name="lBTransportCompany" Height="100" >
+                <ListView.View>
+                    <GridView>
+                        <GridView.Columns>
+                            <GridViewColumn CellTemplate="{StaticResource CheckBoxCell}" 
+                                            />
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Text}">Транспортная компания</GridViewColumn>
+                        </GridView.Columns>
 
+                    </GridView>
+                </ListView.View>
             </ListView>
             <ListView x:Name="lBStatus" Height="100" ItemsSource="{Binding}">
 
-
-            </ListView>
-            <ListView Name="phonesList" ItemsSource="{DynamicResource ResourceKey=phones}" Height="130" >
                 <ListView.View>
                     <GridView>
                         <GridView.Columns>
                             <GridViewColumn CellTemplate="{StaticResource CheckBoxCell}" />
-
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=Title}">Модель</GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=Company}" Width="100">Компания</GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=Price}">Цена</GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Title}">Статус</GridViewColumn>
                         </GridView.Columns>
-                            
+
                     </GridView>
                 </ListView.View>
-                <ListView.Resources>
-                    <col:ArrayList x:Key="phones">
-                        <local:Phone Title="iPhone 6S" Company="Apple" Price="54990" />
-                        <local:Phone Title="Lumia 950" Company="Microsoft" Price="39990" />
-                        <local:Phone Title="Nexus 5X" Company="Google" Price="29990" />
-                    </col:ArrayList>
-                </ListView.Resources>
             </ListView>
-
+     
         </StackPanel>
 
     </Grid>
