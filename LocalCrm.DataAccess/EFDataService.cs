@@ -120,18 +120,22 @@ namespace LocalCrm.DataAccess
             }
         }
 
-        public IEnumerable<SalesOrderHeader> GetSalesOrdersByPeriod(DateTime dtFirst, DateTime dtLast)
+        public IEnumerable<SalesOrderHeader> GetSalesOrdersByPeriod(
+            DateTime dtFirst, DateTime dtLast, 
+            List<int> statusesIds, List<int> tCompaniesIds)
         {
-
             using (var ds = new LocalCrmContext())
             {
-
-                return ds.SalesOrderHeaders
+                var query = ds.SalesOrderHeaders
                     .Include("City")
                     .Include("TransportCompany")
                     .Include("Customer")
                     .Include("SalesPerson")
-                    .Where(x => x.OrderDate >= dtFirst && x.OrderDate <= dtLast).ToList();
+                    .Where(x => x.OrderDate >= dtFirst && x.OrderDate <= dtLast
+                    && statusesIds.Contains((int)x.Status)
+                    && tCompaniesIds.Contains((int)x.TransportCompanyId));
+
+                return query.ToList();
             }
 
         }

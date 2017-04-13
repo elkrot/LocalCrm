@@ -47,10 +47,17 @@ namespace LocalCrm
         {
             if (!_isReportViewerLoaded)
             {
+                List<ReportParameter> reportParameters = new List<ReportParameter>();
+                reportParameters.Add(new ReportParameter("StartDate", ReportCondition.StartDate.ToShortDateString()));
+                reportParameters.Add(new ReportParameter("EndDate", ReportCondition.EndDate.ToShortDateString()));
+
                 var dataset = ReportCondition.DataSet;
                 var datasource = new ReportDataSource(ReportCondition.DataSetName, dataset);
                 this._reportViewer.LocalReport.ReportEmbeddedResource = ReportCondition.ReportName;
                 this._reportViewer.LocalReport.DataSources.Clear();
+
+                this._reportViewer.LocalReport.SetParameters(reportParameters);
+
                 this._reportViewer.LocalReport.DataSources.Add(datasource);
                 this._reportViewer.RefreshReport();
                 _isReportViewerLoaded = true;

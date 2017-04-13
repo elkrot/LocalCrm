@@ -27,8 +27,8 @@ namespace LocalCrm.Reports
         public List<CheckBoxListViewItem> lstStatus;
         public List<CheckBoxListViewItem> lstTransportCompany;
 
-
-        public ReportConditionForm()
+        #region Конструктор
+       public ReportConditionForm()
         {
             InitializeComponent();
 
@@ -51,18 +51,13 @@ namespace LocalCrm.Reports
                         .ToList();
             }
 
-
-
-
-           
-
             lBStatus.ItemsSource = lstStatus;
             lBTransportCompany.ItemsSource = lstTransportCompany;
-           
-
-
+ 
         }
 
+        #endregion
+ 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
@@ -71,8 +66,8 @@ namespace LocalCrm.Reports
     }
 
 
-
-    public class CheckBoxListViewItem : INotifyPropertyChanged
+    #region CheckBoxListViewItem
+ public class CheckBoxListViewItem : INotifyPropertyChanged
     {   private bool isChecked;
         private string text;
         private int id;
@@ -106,4 +101,6 @@ namespace LocalCrm.Reports
 
 
     }
-}
+
+    #endregion
+   }

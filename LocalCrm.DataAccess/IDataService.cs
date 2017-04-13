@@ -40,7 +40,8 @@ namespace LocalCrm.DataAccess
         City GetCityById(int cityId);
         MethodResult<int> SaveCity(City city);
 
-        IEnumerable<SalesOrderHeader> GetSalesOrdersByPeriod(DateTime dtFirst, DateTime dtLast);
+        IEnumerable<SalesOrderHeader> GetSalesOrdersByPeriod(DateTime dtFirst, DateTime dtLast,
+            List<int> statusesIds, List<int> tCompaniesIds);
 
         Customer GetCustomerByCondition(Expression<Func<Customer, bool>> where);
         City GetCityByCondition(Expression<Func<City, bool>> where);

@@ -52,19 +52,26 @@ namespace LocalCrm
             if (rcf.DialogResult == true)
             {
 
-                var stId = "";
+                List<int> statusesIds = new List<int>();
+                List<int> tCompaniesIds = new List<int>();
                 foreach (var item in rcf.lstStatus.Where(x => x.IsChecked))
                 {
-                    stId += "," + item.Id.ToString();
+                    statusesIds.Add(item.Id);
                 }
-                System.Windows.Forms.MessageBox.Show(stId);
 
+                foreach (var item in rcf.lstTransportCompany.Where(x => x.IsChecked))
+                {
+                    tCompaniesIds.Add(item.Id);
+                }
 
 
                 using (var dataService = new EFDataService())
                 {
-                    rc.DataSet = dataService.GetSalesOrdersByPeriod(rc.StartDate, rc.EndDate);
+                    rc.DataSet = 
+                        dataService.GetSalesOrdersByPeriod(rc.StartDate, rc.EndDate,
+                        statusesIds, tCompaniesIds);
                 }
+                
                 var rv = new ReportViwer(rc);
                 rv.ShowDialog();
             }
