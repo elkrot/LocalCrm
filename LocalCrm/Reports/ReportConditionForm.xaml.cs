@@ -1,4 +1,7 @@
-﻿using System;
+﻿using LocalCrm.DataAccess;
+using LocalCrm.DataProvider.Lookups;
+using LocalCrm.Model;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -21,48 +24,86 @@ namespace LocalCrm.Reports
     /// </summary>
     public partial class ReportConditionForm : Window
     {
-        ObservableCollection<CheckBoxListViewItem> lst;
+        public List<CheckBoxListViewItem> lstStatus;
+        public List<CheckBoxListViewItem> lstTransportCompany;
+
+
         public ReportConditionForm()
         {
             InitializeComponent();
-            lst = new ObservableCollection<CheckBoxListViewItem>() {
-                new CheckBoxListViewItem( "tssss1", true )
-            ,new CheckBoxListViewItem( "tssssss2", false )};
 
-            lBStatus.ItemsSource = lst;
-            lBTransportCompany.ItemsSource = lst;
+           
+            using (var service = new EFDataService())
+            {
+                lstStatus = service.GetAllStatuses()
+                        .Select(c => new CheckBoxListViewItem(c.Name, true, c.Id) { }
+                        )
+                        .OrderBy(l => l.Text)
+                        .ToList();
+            }
+
+            using (var service = new EFDataService())
+            {
+                lstTransportCompany = service.GetAllTransportCompanies()
+                        .Select(c => new CheckBoxListViewItem(c.TransportCompanyName, true, c.TransportCompanyId) { }
+                        )
+                        .OrderBy(l => l.Text)
+                        .ToList();
+            }
+
+
+
+
+           
+
+            lBStatus.ItemsSource = lstStatus;
+            lBTransportCompany.ItemsSource = lstTransportCompany;
+           
+
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = true;
+            this.Close();
         }
     }
 
-    public class Test
-    {
-        public string Title { get; set; }
-        public bool IsSelected { get; set; }
 
-    }
-
-    public class Phone
-    {
-
-        public string Title { get; set; }
-        public string Company { get; set; }
-        public int Price { get; set; }
-
-    }
 
     public class CheckBoxListViewItem : INotifyPropertyChanged
-    { private bool isChecked;
+    {   private bool isChecked;
         private string text;
+        private int id;
         public bool IsChecked { get { return isChecked; } set { if (isChecked == value) return;
                 isChecked = value;
                 RaisePropertyChanged("IsChecked"); } }
 
+
+        public int Id
+        {
+            get { return id; }
+            set
+            {
+                if (id == value) return;
+                id = value;
+                RaisePropertyChanged("Id");
+            }
+        }
+
+
+
         public String Text { get { return text; } set { if (text == value) return;
                 text = value; RaisePropertyChanged("Text"); } }
 
-        public CheckBoxListViewItem(string t, bool c) { this.Text = t; this.IsChecked = c; }
+        public CheckBoxListViewItem(string t, bool c,int i) { this.Text = t; this.IsChecked = c;this.Id = i; }
+
         public event PropertyChangedEventHandler PropertyChanged;
         private void RaisePropertyChanged(string propName)
         { PropertyChangedEventHandler eh = PropertyChanged; if (eh != null)
-            { eh(this, new PropertyChangedEventArgs(propName)); } } }
+            { eh(this, new PropertyChangedEventArgs(propName)); } }
+
+
+    }
 }

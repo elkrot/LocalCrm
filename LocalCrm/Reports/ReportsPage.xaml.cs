@@ -41,18 +41,34 @@ namespace LocalCrm
             ShowReport(@"LocalCrm.Reports.ReportByTransportCompany.rdlc", "Orders");
         }
 
-        private void ShowReport(string reportName,string dataStName) {
+        private void ShowReport(string reportName, string dataStName)
+        {
             rc.ReportName = reportName;
             rc.DataSetName = dataStName;
 
             ReportConditionForm rcf = new ReportConditionForm();
             rcf.ShowDialog();
-            using (var dataService = new EFDataService())
+
+            if (rcf.DialogResult == true)
             {
-                rc.DataSet = dataService.GetSalesOrdersByPeriod(rc.StartDate, rc.EndDate);
+
+                var stId = "";
+                foreach (var item in rcf.lstStatus.Where(x => x.IsChecked))
+                {
+                    stId += "," + item.Id.ToString();
+                }
+                System.Windows.Forms.MessageBox.Show(stId);
+
+
+
+                using (var dataService = new EFDataService())
+                {
+                    rc.DataSet = dataService.GetSalesOrdersByPeriod(rc.StartDate, rc.EndDate);
+                }
+                var rv = new ReportViwer(rc);
+                rv.ShowDialog();
             }
-            var rv = new ReportViwer(rc);
-            rv.ShowDialog();
+
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
