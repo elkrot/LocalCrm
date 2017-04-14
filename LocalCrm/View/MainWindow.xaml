@@ -9,7 +9,7 @@
         xmlns:view="clr-namespace:LocalCrm.View"
         Title="Учет заказов" FontSize="{StaticResource DefaultFontSize}"
         MinHeight="750" MinWidth="900" Height="750" Width="1240"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid ShowGridLines="False" RenderTransformOrigin="0.503,0.453" Background="White">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>

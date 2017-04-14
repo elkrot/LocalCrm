@@ -7,7 +7,7 @@
         xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
         mc:Ignorable="d"
          FontSize="{StaticResource DefaultFontSize}"
-        Title="Условие отбора для отчета" Height="421" Width="449">
+        Title="Условие отбора для отчета" Height="550" Width="449" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <DataTemplate x:Key="CheckBoxCell">
             <StackPanel Orientation="Horizontal">
